@@ -93,4 +93,12 @@ class TransactionController extends Controller
         $pdf = \PDF::loadView('donor.receipt',compact('bal','transaction'))->setPaper('A4', 'portrait')->setWarnings(false)->save('receipt.pdf');
         return $pdf->stream();
     }
+
+    public function printAll($id)
+    {
+        $donor=Donor::findOrFail($id);
+        $pdf = \PDF::loadView('donor.receiptall',compact('donor'))->setPaper('A4', 'portrait')->setWarnings(false)->save('receipt.pdf');
+        return $pdf->stream();
+        // return collect($transaction->transaction)->sum('amount');
+    }
 }

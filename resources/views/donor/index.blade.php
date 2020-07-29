@@ -31,7 +31,7 @@
 			            @endif
 					@endif
 				@endforeach
-				<td><a class="btn btn-info" href="{{ url('/') }}/{{$route}}/{{$item1->id}}">View</a></td>
+				<td><a class="btn btn-info" href="{{ url('/') }}/{{$route}}/{{$item1->id}}">Details</a>|<a class="btn btn-info" href="{{ url('/') }}/print/{{$item1->id}}" target="_blank">Print</a></td>
 			</tr>
 			@endforeach
 		</table>

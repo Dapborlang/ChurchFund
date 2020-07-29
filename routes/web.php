@@ -30,6 +30,6 @@ Route::get('{id}/pages','PageController@show');
 
 Route::resource('transaction','TransactionController');
 Route::get('print/{id}/{amt}','TransactionController@print');
-
+Route::get('print/{id}','TransactionController@printAll');
 
 

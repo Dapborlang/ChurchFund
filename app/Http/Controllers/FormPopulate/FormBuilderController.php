@@ -39,7 +39,7 @@ class FormBuilderController extends Controller
         $columns = \DB::connection()->getSchemaBuilder()->getColumnListing($model->table_name);
         foreach($columns as $data)
         {
-            $table=$table->orWhere($data,'ilike','%'.$dataString.'%');
+            $table=$table->orWhere($data,'like','%'.$dataString.'%');
         }
 
         if ($request->isMethod('post')) {
@@ -49,7 +49,7 @@ class FormBuilderController extends Controller
                     $param=$foreign[$key][2];
                     $key=array_values(array_slice((explode('\\',$key)), -1))[0];
                     $table=$table->orWhereHas($key, function ($query) use($param,$dataString) {
-                        $query->where($param,'ilike','%'.$dataString.'%');
+                        $query->where($param,'like','%'.$dataString.'%');
                     });
                 }
             }

@@ -31,14 +31,14 @@
 		<i>La ioh pdiang na</i>
 	</center><br>
 U/Ka ....................................................................................................................................................  <br><br>
-Rs. ............................./- (........................................................................................................ Tyngka)<br><br> na ka jingkular haka <U>{{$transaction->date}}</U><br><br>
-La siew Rs. &nbsp; &nbsp; _____________________<br><br>
+Rs. ............................./- (........................................................................................................ Tyngka)<br><br> na ka jingkular haduh ka <U>{{collect($donor->transaction)->max('date')}}</U><br><br>
+Kular Rs. &nbsp; &nbsp; _____________________<br><br>
 Dang Sah Rs. _____________________ <br><br>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Jingsoi Kyrteng
 
-<div id="name">{{$transaction->Donor->name}}, {{$transaction->Donor->address}}</div>
-<div id="bal">{{$bal}}</div>
-<div id="amt">{{$transaction->amount}}</div>
-<div id="pd">{{($transaction->Donor->amount)-$bal}}</div>
+<div id="name">{{$donor->name}}, {{$donor->address}}</div>
+<div id="bal">{{($donor->amount)-(collect($donor->transaction)->sum('amount'))}}</div>
+<div id="amt">{{collect($donor->transaction)->sum('amount')}}</div>
+<div id="pd">{{($donor->amount)}}</div>
 </body>
 </html>

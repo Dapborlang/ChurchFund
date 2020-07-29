@@ -14,7 +14,7 @@ class CreateDonorsTable extends Migration
             $table->string('name');
             $table->string('sex');
             $table->text('address');
-            $table->string('mobile')->unique();
+            $table->string('mobile')->nullable();
             $table->decimal('amount', 10, 2);
             $table->date('date');
             $table->timestamps();
